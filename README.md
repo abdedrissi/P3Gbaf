@@ -1,0 +1,80 @@
+# GBAF
+OpenClassRooms - Initiation Full Stack - Projet 3 GBAF
+
+Exercice de programmation procédurale PHP & MySQL
+
+Objectif :
+
+Créer un site de partage d'informations sur différents acteurs du secteur bancaire.
+
+
+Fonctionnalités :
+
+
+Générales :
+
+- Sytème d'inscription / connexion avec mot de passe
+
+- Connexion obligatoire sans quoi aucun contenu n'est accessible (sauf Inscription / Contact / Mentions-Légales).
+
+
+En-tête et pieds de page :
+
+Chaque page inclut le même en-tête et pied de page.
+Tant qu'il n'y a pas de connexion, l'en-tête inclut le logo GBAF à gauche, deux liens à droite : s'inscrire ou se connecter.
+En cas de connexion active, logo de GBAF à gauche, un avatar, nom, prénom utilisateur à droite avec bouton de déconnexion.
+Le pied de page est statique peu importe l'état de la connexion, liens au centre vers pages de mentions-légales et contact.
+
+
+Par page :
+
+- Page de connexion : formulaire de connexion demandant l'indentifiant utilisateur et son mot de passe,
+			liens vers la page d'inscription et vers la page de réinitialisation du mot de passe.
+
+- Page d'inscripiton : formulaire d'inscription demandant nom, prénom, indentifiant utilisateur, mot de passe et confirmation du mot de passe, question secrète et réponse à la question secrète.
+			L'identifiant est unique (vérification dans la base de données s'il n'est pas déjà existant),
+			mot de passe avec format minimum imposé (8 caractères, une majuscule, un chiffre et un caractère spécial au minimum),
+			mot de passe et réponse à la question secrète hashées avant écriture dans la base de données.
+
+- Page de réinitialisation du mot de passe : formulaire de réinitialisation par étape,
+
+étape 1 : demande de l'identifiant (puis vérification de son existance)
+
+étape 2 : envoi de la question, formulaire demandant la réponse, le nouveau mot de passe et confirmation du mot de passe.
+
+étape 3 : si les informations sont valides, renvoi vers page de connexion, sinon message d'erreur.
+
+
+- Page d'accueil : présentation de GBAF, introduction puis dresse une liste des acteurs à présenter avec un extrait de la description et lien vers la page complète.
+
+- Page acteur : description complète d'un acteur, 
+		nombre de recommandations pour cet acteur (like/dislike) et liste des utilisateurs ayant recommandé / déconseillé en infobulle, 
+		possibilité d'ajouter une recommandation (unique) pour l'utilisateur en cours ou de la supprimer / inverser,
+		possibilité d'ajouter un commentaire (unique) ou de le supprimer,
+		liste des commentaires postés pour cet acteur, triés du plus ancien au plus récent, avec les références des utilisateurs ayant commenté en plus de la date.
+
+- Page profil : rappel des informations de l'utilisateur en cours,
+		possibilité de changer son identifiant utilisateur,
+		possibilité de changer son mot de passe,
+		
+- Page de mentions-légales : vide par défaut.
+
+- Page de contact : vide par défaut.
+
+- style.css : apparence du site avec 3 points de rupture (900px / 768px / 480px) pour adaptation responsive.
+
+Structure :
+
+Le projet contient trois dossiers (includes, pages et traitement) et un fichier index.php:
+
+  - Le dossier Includes contient en-tête et pied-de page, ils seront appelés sur chaque page.
+
+  - Le dossier Pages contient les différentes pages du site (majoritairement en html et quelques conditions php),
+
+un dossier logos qui contient les images fixes du site,
+le fichier style.css qui définira l'apparence du site.
+
+  - Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
+
+
+
