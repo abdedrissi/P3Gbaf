@@ -76,5 +76,56 @@ le fichier style.css qui définira l'apparence du site.
 
   - Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
 
+La Base de données :
+
+L'export de la base de données, fourni à titre d'exemple, inclut des personnes fictives qui intéragissent sur les différents acteurs pour mieux mettre en évidence le rendu final.
+
+Nom de la base de données : gbaf
+
+Elle se découpe en 4 tables (account, actor, post, vote) :
+
+-- Structure de la table `account` / Contient les informations utilisateurs
+
+CREATE TABLE `account` (
+  `id_user` int(11) NOT NULL,
+  `nom` varchar(127) NOT NULL,
+  `prenom` varchar(127) NOT NULL,
+  `username` varchar(127) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `reponse` varchar(255) NOT NULL,
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- Structure de la table `actor` / Contient les informations qui concernent les acteurs à présenter
+
+CREATE TABLE `actor` (
+  `id_actor` int(11) NOT NULL,
+  `actor` varchar(127) NOT NULL,
+  `description` text NOT NULL,
+  `logo` varchar(127) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- Structure de la table `post` / Contient les commentaires
+
+CREATE TABLE `post` (
+  `id_post` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_actor` int(11) NOT NULL,
+  `date_add` datetime NOT NULL DEFAULT current_timestamp(),
+  `post` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- Structure de la table `vote` / Contient la liste des mentions "like" & "dislike"
+
+CREATE TABLE `vote` (
+  `id_vote` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_actor` int(11) NOT NULL,
+  `vote` enum('like','dislike') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
